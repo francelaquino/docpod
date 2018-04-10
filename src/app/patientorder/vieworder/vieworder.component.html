@@ -1,0 +1,52 @@
+<div class="portlet gray modal-xl" style="margin:0px;">
+
+  <div class="title">
+    Patient Order
+  </div>
+  <div class="portlet-body form">
+
+    <form  class="ui form">
+      <div class="form-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" >
+              <label class="control-label">HbA1C
+              </label>
+              <input type="text" maxlength="50"  class="form-control ">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label">Triglycerides
+              </label>
+              <input type="text"  class="form-control">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label">LDLC</label>
+              <input type="text"  class="form-control">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label">HDLC
+              </label>
+              <input type="text"  class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        
+        <div class="divider"></div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="button" id="btnSubmit" >Submit</button>
+          <button class="btn default" type="button" (click)="bsModalRef.hide()">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

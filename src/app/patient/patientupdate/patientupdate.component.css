@@ -1,0 +1,6 @@
+
+::ng-deep p-dialog .ui-dialog {
+    position: absolute;
+    
+    left:40% !important;
+}

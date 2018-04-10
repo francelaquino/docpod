@@ -1,0 +1,166 @@
+<app-mainmenu></app-mainmenu>
+<div class="page-content-wrapper">
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <span>Patient Visit</span>
+            <i class="fa fa-chevron-right"></i>
+
+        </li>
+        <li>
+            <span>New  Patient Visit</span>
+            <i class="fa fa-chevron-right"></i>
+        </li>
+    </ul>
+
+
+    <div class="page-content-inner">
+
+        <div class="row">
+            <div class="col-md-12 ">
+
+                <div class="portlet gray ">
+
+                    <div class="title">
+                        Patient Information
+                    </div>
+
+
+                    <div class="portlet-body form">
+
+
+                        <form [formGroup]="form" class="ui form">
+                            <div class="form-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="note note-success" style="display:none">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Medical No.</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" formControlName="medicalno">
+                                                <span class="input-group-addon hand-cursor" (click)="getPatientDetails()">
+                          <i class="fa fa-search"></i>
+                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">First Name</label>
+                                            <input type="text" readonly="readonly" formControlName="firstname" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Middle Name</label>
+                                            <input type="text" readonly="readonly" formControlName="secondname" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Last Name</label>
+                                            <input type="text" readonly="readonly" formControlName="lastname" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Gender</label>
+                                            <input type="text" readonly="readonly" formControlName="gender" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Nationality</label>
+                                            <input type="text" readonly="readonly" formControlName="nationality" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Birthdate</label>
+                                            <input type="text" readonly="readonly" formControlName="birthdate" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Email Address</label>
+                                            <input type="text" readonly="readonly" formControlName="emailaddress" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="divider"></div>
+                                <div class="form-actions">
+                                    <button class="btn btn-primary" type="button" (click)="createPatientVisit()">Create Visit</button>
+                                    <button class="btn default" type="button" (click)="onClear()">Clear</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="divider"></div>
+                        <div class="row padding-10">
+                            <div class="col-md-12">
+                                <p-dataTable [responsive]="true" sortMode="multiple" selectionMode="single" [value]="patientorders" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+                                    <p-column field="datecreated" header="Date"></p-column>
+                                    <p-column field="visitno" header="Visit No."></p-column>
+                                    <p-column field="hba1c" header="HBA1C"></p-column>
+                                    <p-column field="totalcholesterol" header="TC"></p-column>
+                                    <p-column field="hdlc" header="HDLC"></p-column>
+                                    <p-column field="ldlc" header="LDLC"></p-column>
+                                    <p-column field="triglycerides" header="TC"></p-column>
+                                    <p-column field="bloodpressure" header="BP"></p-column>
+                                    <p-column field="waist" header="WAIST"></p-column>
+                                    <p-column field="bmi" header="BMI"></p-column>
+                                    <p-column styleClass="col-button" header="">
+
+                                        <ng-template let-patient="rowData" pTemplate="body">
+                                            <button type="button" (click)="updateMainOrder(patient.medicalno,patient.visitno)" class="btn blue ">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </button>
+                                            <button type="button" (click)="updateQuestionaire1(patient.medicalno,patient.visitno)" title="Survey 1" class="btn blue ">
+                        S1
+                      </button>
+
+
+
+                                        </ng-template>
+                                    </p-column>
+                                    <p-column styleClass="col-button2" header="">
+
+                                        <ng-template let-patient="rowData" pTemplate="body">
+
+                                            <button type="button" (click)="showHealthScore_v1(patient.medicalno,patient.visitno)" class="btn blue ">
+                                                                    Heath Score 
+                                                                  </button>
+                                            <button type="button" (click)="showCVDScore_v1(patient.medicalno,patient.visitno)" class="btn blue ">
+                                                                    CVD Score
+                                                                  </button>
+                                                                  <button type="button" (click)="showPrediabetic_v1(patient.medicalno,patient.visitno)" class="btn blue ">
+                                                                    Prediabetic 
+                                                                  </button>
+                                            
+                                                                  <button type="button" (click)="showDocPodReport_v1(patient.medicalno,patient.visitno)" class="btn blue ">
+                                                                    Docpod Report
+                                                                  </button>
+                                                                  
+
+                                        </ng-template>
+                                    </p-column>
+                                </p-dataTable>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
